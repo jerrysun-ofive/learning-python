@@ -3,18 +3,17 @@ from PIL import Image
 import PIL
 
 # target_jpg = Image.open("5x5_img.jpg")
-target_jpg = Image.open("image_one.jpg")
+target_jpg = Image.open("image_two.jpg")
 # target_jpg = Image.open("5x10_img.jpg")
 
-px = target_jpg.load()
-
-
 jpg_size = target_jpg.size
-jpg_width = jpg_size[0]
-jpg_height = jpg_size[1]
+jpg_width = int(jpg_size[0] / 1)
+jpg_height = int (jpg_size[1] / 1)
 # print(jpg_height)
 # print(jpg_width)
 pixle_array = []
+resized = target_jpg.resize((jpg_width, jpg_height))
+px = resized.load()
 
 
 # print(px[4,9])
@@ -57,7 +56,7 @@ for i in range(jpg_height):
 for i in range(jpg_height):
     for j in range(jpg_width):
         print(pixle_array[i][j], end="")
-        # print(pixle_array[i][j], end="")
+        print(pixle_array[i][j], end="")
     print("")
 
 
