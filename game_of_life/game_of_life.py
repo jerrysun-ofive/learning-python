@@ -34,10 +34,46 @@ def random_state(board):
         row_count += 1
     return board
 
+# pretty renders the game onto the terminal
+def render(board):
+    # prints out the top boarder of the board
+    board_outline(board)
+    
+    # get height and width of the board
+    height = len(board)
+    width = len(board[1])
+
+    for row in board:
+        render_line(row)
+
+    board_outline(board)
+                
+
+# prints a line break that represents the boarder of the game
+def board_outline(board):
+    print("  ", end = "")
+    for i in range(len(board[1])):
+        print("-  ", end = "")
+    print("")
+
+# renders a single line of the board to pretty print
+def render_line(row):
+    print("|", end = "")
+    for i in range(len(row)):
+        if row[i] == 1:
+            print(" # ", end = "")
+        else:
+            print("   ", end = "")
+    print("|")
+    
+
+# define the height and width of board
+height = 10
+width = 10
+
 # initalise a deafult board
-game_board = dead_state(5, 10)
+game_board = dead_state(height, width)
 # creates a random 'soup' of cells to start the game
 game_board = random_state(game_board)
 
-for row in game_board:
-    print(row)
+render(game_board)
