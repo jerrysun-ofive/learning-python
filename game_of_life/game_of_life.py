@@ -6,3 +6,14 @@
 #   4) Run the game forever
 #   5) Use python curser library to create a good UI
 ##########################################################
+
+#represent alive cells with 1 and dead cells with 0
+
+def dead_state(height: int, width: int):
+    new_board = [[0]*width]*height
+    return new_board
+
+return_board = dead_state(5, 10)
+
+for row in return_board:
+    print(row)
