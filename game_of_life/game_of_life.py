@@ -69,7 +69,31 @@ def render_line(row):
 # loop through the entire board and update each cell state according
 # to the number of cells it is around
 def update_cells(board):
-    print("test_case")
+    # create a new board to store return board
+    return_board = dead_state(len(board), len(board[1]))
+
+    # update all cells that are not edge pieces
+    for i in range(1, len(board)):
+        for j in range(1, len(board[1])):
+                if board[i][j] == 1:
+                    sum = check_cell_surrounding(board, i, j)
+                    if sum 
+    # update all edge pieces
+
+#given a single square of the board, check immediate surrouding cells
+def check_cell_surrounding(board, x, y):
+    return_sum = 0
+    for i in range(-1, 2):
+        for j in range(-1, 2):
+            return_sum = return_sum + board[x + i][y + j]
+
+    # return sum - 1 because we don't want to include the cell that is getting check
+    if board[x][y] == 1:
+        return return_sum - 1
+    else:
+        return return_sum
+
+
 
     
 
