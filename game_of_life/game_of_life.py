@@ -27,7 +27,7 @@ def random_state(board):
         for item in row: 
             # print(f"item: {item_count}")
             temp_choice = random.randrange(1, 10)
-            if temp_choice < 3:
+            if temp_choice < 4:
                 board[row_count][item_count] = 1
             item_count += 1
             
@@ -65,6 +65,12 @@ def render_line(row):
         else:
             print("   ", end = "")
     print("|")
+
+# loop through the entire board and update each cell state according
+# to the number of cells it is around
+def update_cells(board):
+    print("test_case")
+
     
 
 # define the height and width of board
@@ -75,5 +81,5 @@ width = 10
 game_board = dead_state(height, width)
 # creates a random 'soup' of cells to start the game
 game_board = random_state(game_board)
-
+#renders the board in terminal 
 render(game_board)
