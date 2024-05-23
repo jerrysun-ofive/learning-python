@@ -1,14 +1,15 @@
 def check_cell_surrounding(board, x, y):
-    if board[x][y] == 0:
-        return 0
-
     return_sum = 0
     for i in range(-1, 2):
         for j in range(-1, 2):
+            # print(f"i: {i}, j: {j}")
             return_sum = return_sum + board[x + i][y + j]
 
     # return sum - 1 because we don't want to include the cell that is getting check
-    return return_sum - 1
+    if board[x][y] == 1: 
+        return return_sum - 1
+    else:
+        return return_sum
 
 def update_cells(board):
     # create a new board to store return board
@@ -28,9 +29,9 @@ def update_cells(board):
 
 board = [
     [0, 0, 0, 0, 0],
-    [0, 0, 1, 1, 0],
     [0, 1, 0, 1, 0],
-    [0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0],
     [0, 0, 0, 0, 0],
 ]
 

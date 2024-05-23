@@ -1,7 +1,7 @@
 ##########################################################
             ## milestones for this project ##
-#   1) Build a data structure to store the board state
-#   2) “Pretty-print” the board to the terminal
+#   1) Build a data structure to store the board state - DONE
+#   2) “Pretty-print” the board to the terminal - DONE
 #   3) Given a starting board state, calculate the next one
 #   4) Run the game forever
 #   5) Use python curser library to create a good UI
@@ -73,12 +73,22 @@ def update_cells(board):
     return_board = dead_state(len(board), len(board[1]))
 
     # update all cells that are not edge pieces
-    for i in range(1, len(board)):
-        for j in range(1, len(board[1])):
-                if board[i][j] == 1:
-                    sum = check_cell_surrounding(board, i, j)
-                    if sum 
+    for i in range(1, len(board) - 1):
+        for j in range(1, len(board[1]) - 1):
+            sum = check_cell_surrounding(board, i, j)
+            if sum == 0 or sum == 1:
+                return_board[i][j] = 0
+            elif sum == 2 or sum == 3:
+                return_board[i][j] = 1
+            elif sum == 3:
+                return_board[i][j] = 1
+            else:
+                return_board[i][j] = 0
+                    
     # update all edge pieces
+
+    for row in return_board:
+        print(row)
 
 #given a single square of the board, check immediate surrouding cells
 def check_cell_surrounding(board, x, y):
@@ -87,23 +97,25 @@ def check_cell_surrounding(board, x, y):
         for j in range(-1, 2):
             return_sum = return_sum + board[x + i][y + j]
 
+    print(f"return sum in function: {return_sum}")
+
     # return sum - 1 because we don't want to include the cell that is getting check
-    if board[x][y] == 1:
+    if board[x][y] == 1: 
         return return_sum - 1
     else:
         return return_sum
 
-
-
-    
-
 # define the height and width of board
-height = 10
-width = 10
+height = 4
+width = 4
 
 # initalise a deafult board
 game_board = dead_state(height, width)
 # creates a random 'soup' of cells to start the game
 game_board = random_state(game_board)
+
+for row in game_board:
+    print(row)
 #renders the board in terminal 
 render(game_board)
+update_cells(game_board)
